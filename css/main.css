@@ -2,7 +2,7 @@
 /*Global CSS*/
 
 body {
-	transistion: all 2sec ease-in-out;
+	/*transistion: all 2sec ease-in-out;*/
 }
 
 
@@ -30,6 +30,16 @@ body {
 	background-color: #eee;
 
 }
+
+.hidden {
+	bottom: 0;
+}
+
+.visible {
+	bottom: 175px;
+}
+
+
 
 /*Book CSS*/
 .book {
