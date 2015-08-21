@@ -1,0 +1,1 @@
+$(document).ready(function(){for(var o=$(".book"),n=$(".chapter-list"),c=0;c<n.length;c++)console.log(n[c]);$(".navbar-menu").click(function(){$(".navbar").animate({bottom:"+=200"},500,function(){})}),console.log(o),console.log("Doc Ready")});
