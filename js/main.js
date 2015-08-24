@@ -4,15 +4,24 @@ $(document).ready(function() {
 var book = $('.book');
 var chapters = $('.chapter-list');
 // var size = [];
+var height = $('.navbar-hidden').css('height');
 
-
-
+$("<style>")
+    .prop("type", "text/css")
+    .html(".visible { bottom: " + height + ";}")
+    .appendTo("head");
 
 // navbar menu slide up/down //
 $(".navbar-menu").click(function(){
-        $(".navbar").toggleClass("visible", 500);
+		// console.log($('.visible'));
+
+        $(".navbar").toggleClass('.visible', 500);
     });
 
+
+// $(".navbar-menu").click(function(){
+// 	$('.visible2').css('bottom', $('.navbar-hidden').css('height'));
+//     });
 
 
 // debugging area, to be removed //
@@ -20,7 +29,7 @@ $(".navbar-menu").click(function(){
 	for (var i = 0; i < chapters.length; i++) {
 		console.log(chapters[i]);
 	}
-
+	// console.log($('.visible').css('bottom'));
 	console.log(book);
   	console.log("Doc Ready");
 
