@@ -26,7 +26,7 @@ body {
 .navbar-hidden {
 	width: 100%;
 	height: auto;
-	min-height: 200px;
+	min-height: 100px;
 	display: inline-block;
 	background-color: #eee;
 
@@ -37,7 +37,7 @@ body {
 }
 
 .visible {
-	bottom: 175px;
+	/*bottom: 175px;*/
 }
 
 

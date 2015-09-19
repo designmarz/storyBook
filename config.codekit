@@ -343,6 +343,39 @@
 		"processHTML": 0,
 		"randomFootnoteNumbers": 0,
 		"useCompatibilityMode": 0
+		},
+	"\/user story SS\/1.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 338290,
+		"inputAbbreviatedPath": "\/user story SS\/1.png",
+		"outputAbbreviatedPath": "\/user story SS\/1.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/user story SS\/2.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 229586,
+		"inputAbbreviatedPath": "\/user story SS\/2.png",
+		"outputAbbreviatedPath": "\/user story SS\/2.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/user story SS\/google-gmail-1.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 103668,
+		"inputAbbreviatedPath": "\/user story SS\/google-gmail-1.jpg",
+		"outputAbbreviatedPath": "\/user story SS\/google-gmail-1.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
 		}
 	},
 "hooks": [
