@@ -16,7 +16,7 @@ body {
 }
 
 .navbar-part {
-	
+
 	text-align: center;
 	margin: 0 auto;
 	/*padding: 5px;*/
@@ -40,6 +40,7 @@ body {
 	display: inline-block;
 	/*font-size: 24pt;*/
 	position: relative;
+	cursor: pointer;	
 }
 
 .hidden {
@@ -61,5 +62,9 @@ body {
 	width: 100vw;
 	height: 100vh;
 	background-color: gray;
+}
+#book-img {
+	width: 100%
+	
 }
 
