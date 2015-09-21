@@ -1,32 +1,44 @@
 $(document).ready(function() {
 /*jslint vars: true, plusplus: true, jquery: true, devel: true, nomen: true, indent: 4, maxerr: 50 */
-// /*global define */
- book = $('.book');
- chapters = $('.chapter-list');
- pages = $('.page');
- list = []
- whichView = 0;
- size = $('.chapter-list').length;
- height = $('.navbar-hidden').css('height');
 
+// /*global define */
+ var book = $('.book');
+ var chapters = $('.chapter-list');
+ var pages = $('.page');
+ var list = [];
+ var whichView = 0;
+
+ // var size = $('.chapter-list').length;
+ var height = $('.navbar-hidden').css('height');
+
+
+// needed to set css for visible // needed to set css for visible //
 $("<style>").prop("type", "text/css").html(".visible { bottom: " + height + ";}").appendTo("head");
+// needed to set css for visible // needed to set css for visible //
+
+
 
 // navbar menu slide up/down //
-$(".navbar-menu").click(function(){
-		// console.log($('.visible'));
 
-        $(".navbar").toggleClass('visible', 500);
+$(".navbar-menu").click(function(){
+    $(".navbar").toggleClass('visible', 500);
     });
 
 
 $(".navbar-hidden").click(function(){
-		// console.log($('.visible'));
-
-        $(".navbar").toggleClass('visible', 500);
+    $(".navbar").toggleClass('visible', 500);
     });
 
+// navbar menu slide up/down //
+
+
+// update UI
+var nav_counter_update = function(pos) {
+	$('.navbar-counter').text("Chapter: " + pos);
+};
+// update UI
+
 // Chapter Section
-$('.navbar-counter').text("Chapter " + size);
 
 // Build list of images
 for (var i = 0; i < pages.length; i++) {
@@ -37,32 +49,52 @@ for (var i = 0; i < pages.length; i++) {
 		list.push(
 		pages[i].outerHTML.slice(17,remove)
 		);
-		// console.log(list);
 	}
 
 
-
-$('#prev-button').click(function(){
+// Chapter display navigation controls ----------------------->
+$('#prev_button').click(function(){
     	// Controls whic page img we are one //
-    	whichView -= 1
-        $('#book-img').attr('src',list[whichView]);
-        console.log(whichView);
-        console.log(list[whichView]);
+    	whichView -= 1;
+    	// allows us to use slice to pass to the 
+    	// chapter display function
+		var location = list[whichView];
+
+        $('#book_img').attr('src',list[whichView]);
+        
+
+        console.log(whichView + " " + list[whichView]);
+
+        nav_counter_update(location.slice(4,7));
     }
 );
 
-$('#next-button').click(function(){
+$('#next_button').click(function(){
     	// Controls whic page img we are one //
-    	whichView += 1
-        $('#book-img').attr('src',list[whichView]);
-        console.log(whichView);
-        console.log(list[whichView]);
+    	whichView += 1;
+    	// allows us to use slice to pass to the 
+    	// chapter display function
+		var location = list[whichView];
+
+        $('#book_img').attr('src',list[whichView]);
+     	
+
+     	console.log(whichView + " " + list[whichView]);
+
+     	nav_counter_update(location.slice(4,7));
     }
 );
+// Chapter display navigation controls ----------------------->
 
-$('#book-img').attr('src',list[whichView]);
+// set the first image
+// Future: Add defualt image view(possibly allow some way to set a logo?)
+$('#book_img').attr('src',list[whichView]);
+nav_counter_update(list[whichView].slice(4,7));
 
 // debugging area, to be removed //
+// debugging area, to be removed //
+// debugging area, to be removed //
+
 	// console.log("------------------------------");
 	// for (var i = 0; i < chapters.length; i++) {
 	// 	console.log(chapters[i]);
@@ -73,12 +105,15 @@ $('#book-img').attr('src',list[whichView]);
 	// console.log("------------------------------");
 	// // console.log($('.visible').css('bottom'));
 	// console.log("Book: ");
-	// console.log(book);
+	console.log(book);
 	// console.log("Chapters: ");
-	// console.log(chapters);
+	console.log(chapters);
 	// console.log("Pages: ");
 	// console.log(pages);
 	// console.log("------------------------------");
   	console.log("Doc Ready");
+
+// debugging area, to be removed //
+// debugging area, to be removed //
 // debugging area, to be removed //
 });
