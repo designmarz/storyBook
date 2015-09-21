@@ -42,23 +42,23 @@ for (var i = 0; i < pages.length; i++) {
 
 
 
-$('#prev-button').on({
-    'click': function(){
+$('#prev-button').click(function(){
+    	// Controls whic page img we are one //
     	whichView -= 1
         $('#book-img').attr('src',list[whichView]);
         console.log(whichView);
         console.log(list[whichView]);
     }
-});
+);
 
-$('#next-button').on({
-    'click': function(){
+$('#next-button').click(function(){
+    	// Controls whic page img we are one //
     	whichView += 1
         $('#book-img').attr('src',list[whichView]);
         console.log(whichView);
         console.log(list[whichView]);
     }
-});
+);
 
 $('#book-img').attr('src',list[whichView]);
 

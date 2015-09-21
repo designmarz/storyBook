@@ -8,7 +8,7 @@ body {
 
 /*Navbar CSS*/
 .navbar {
-	width: 100%;
+	width: 100vw;
 	height: 75px;
 	background-color: #000;
 	position: fixed;
@@ -18,16 +18,19 @@ body {
 .navbar-part {
 
 	text-align: center;
-	margin: 0 auto;
+	/*margin: 0 auto;*/
 	/*padding: 5px;*/
-	width: 33%;
+	/*width: 33vw;*/
 	height: 75px;
 	display: inline-block;
 	background-color: #fff;
 }
+/*.navbar-counter {
+	width:30vw;
+}*/
 
 .navbar-hidden {
-	width: 100%;
+	width: 100vw;
 	height: auto;
 	min-height: 100px;
 	display: inline-block;
@@ -38,10 +41,21 @@ body {
 .navbar-button {
 	text-align: right;
 	display: inline-block;
-	/*font-size: 24pt;*/
+	font-size: 24pt;
 	position: relative;
 	cursor: pointer;	
 }
+
+
+#menu {
+    width: 24px;
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    fill: #1A8AEC;
+}
+
+
 
 .hidden {
 	bottom: 0;
@@ -60,11 +74,12 @@ body {
 
 .book-view {
 	width: 100vw;
-	height: 100vh;
+	/*height: 100vh;*/
 	background-color: gray;
 }
 #book-img {
-	width: 100%
-	
+	margin: 0 15%;
+	width: 70%
+
 }
 
