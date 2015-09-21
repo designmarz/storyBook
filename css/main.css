@@ -2,7 +2,7 @@
 /*Global CSS*/
 
 body {
-	/*transistion: all 2sec ease-in-out;*/
+    
 }
 
 
@@ -13,6 +13,7 @@ body {
 	background-color: #000;
 	position: fixed;
 	bottom: 0;
+	z-index: 99999;
 }
 
 .navbar-part {
@@ -38,14 +39,21 @@ body {
 
 }
 
+.navbar-buttons {
+	    text-align: right;
+}
+
 .navbar-button {
 	text-align: right;
 	display: inline-block;
 	font-size: 24pt;
-	position: relative;
+	/*position: relative;*/
 	cursor: pointer;	
 }
 
+.navbar-counter {
+	font-size: 24pt;
+}
 
 #menu {
     width: 24px;

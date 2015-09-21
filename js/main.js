@@ -23,8 +23,6 @@ $("<style>").prop("type", "text/css").html(".visible { bottom: " + height + ";}"
 $(".navbar-menu").click(function(){
     $(".navbar").toggleClass('visible', 500);
     });
-
-
 $(".navbar-hidden").click(function(){
     $(".navbar").toggleClass('visible', 500);
     });
@@ -40,7 +38,7 @@ var nav_counter_update = function(pos) {
 
 // Chapter Section
 
-// Build list of images
+// Build list of images //
 for (var i = 0; i < pages.length; i++) {
 	// figure out the length need to grab the whole file path
 	// well need to re-write this when I change to adding a setup page
@@ -50,10 +48,21 @@ for (var i = 0; i < pages.length; i++) {
 		pages[i].outerHTML.slice(17,remove)
 		);
 	}
+// Build list of images //
+
+// Build section for changing description text //
+
+
+
+// Build section for changing description text //
+
 
 
 // Chapter display navigation controls ----------------------->
 $('#prev_button').click(function(){
+// Need to add if check so coutnters can't
+// go past the number of pages and chapters
+
     	// Controls whic page img we are one //
     	whichView -= 1;
     	// allows us to use slice to pass to the 
@@ -70,6 +79,9 @@ $('#prev_button').click(function(){
 );
 
 $('#next_button').click(function(){
+// Need to add if check so coutnters can't
+// go past the number of pages and chapters
+
     	// Controls whic page img we are one //
     	whichView += 1;
     	// allows us to use slice to pass to the 
@@ -86,7 +98,7 @@ $('#next_button').click(function(){
 );
 // Chapter display navigation controls ----------------------->
 
-// set the first image
+// Set the first image
 // Future: Add defualt image view(possibly allow some way to set a logo?)
 $('#book_img').attr('src',list[whichView]);
 nav_counter_update(list[whichView].slice(4,7));
