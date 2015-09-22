@@ -9,22 +9,28 @@ $(document).ready(function() {
  var whichView = 0;
 
  // var size = $('.chapter-list').length;
- var height = $('.navbar-hidden').css('height');
+	var height = function() {
+		return $('.navbar-hidden').css('height');
+	};
+	height();
+
+ // var height = $('.navbar-hidden').css('height');
 
 
 // needed to set css for visible // needed to set css for visible //
-$("<style>").prop("type", "text/css").html(".visible { bottom: " + height + ";}").appendTo("head");
+$('<style>').prop('type', 'text/css').html('.visible { bottom: ' + height() + ';}').appendTo('head');
 // needed to set css for visible // needed to set css for visible //
 
 
 
 // navbar menu slide up/down //
 
-$(".navbar-menu").click(function(){
-    $(".navbar").toggleClass('visible', 500);
+$('.navbar-menu').click(function(){
+    $('.navbar').toggleClass('visible', 500);
+    console.log('menu clicked');
     });
-$(".navbar-hidden").click(function(){
-    $(".navbar").toggleClass('visible', 500);
+$('.navbar-hidden').click(function(){
+    $('.navbar').toggleClass('visible', 500);
     });
 
 // navbar menu slide up/down //
@@ -33,6 +39,13 @@ $(".navbar-hidden").click(function(){
 // update UI
 var nav_counter_update = function(pos) {
 	$('.navbar-counter').text("Chapter: " + pos);
+};
+
+var chapter_desc_update = function(pos) {
+	var textUpdate = '#page_desc_' + pos;
+	$('.page-desc').hide();
+	$(textUpdate).show();
+	height();
 };
 // update UI
 
@@ -68,13 +81,15 @@ $('#prev_button').click(function(){
     	// allows us to use slice to pass to the 
     	// chapter display function
 		var location = list[whichView];
-
+// This changes the img src of the book-view image
         $('#book_img').attr('src',list[whichView]);
         
 
-        console.log(whichView + " " + list[whichView]);
 
+        // console.log(whichView + " " + list[whichView]);
+       // passes current location to the nav update function
         nav_counter_update(location.slice(4,7));
+        chapter_desc_update(location.slice(4,7));
     }
 );
 
@@ -87,13 +102,15 @@ $('#next_button').click(function(){
     	// allows us to use slice to pass to the 
     	// chapter display function
 		var location = list[whichView];
-
+// This changes the img src of the book-view image
         $('#book_img').attr('src',list[whichView]);
      	
 
-     	console.log(whichView + " " + list[whichView]);
 
+     	// console.log(whichView + " " + list[whichView]);
+     // passes current location to the nav update function
      	nav_counter_update(location.slice(4,7));
+     	chapter_desc_update(location.slice(4,7));
     }
 );
 // Chapter display navigation controls ----------------------->
@@ -123,7 +140,7 @@ nav_counter_update(list[whichView].slice(4,7));
 	// console.log("Pages: ");
 	// console.log(pages);
 	// console.log("------------------------------");
-  	console.log("Doc Ready");
+  	console.log('Doc Ready');
 
 // debugging area, to be removed //
 // debugging area, to be removed //

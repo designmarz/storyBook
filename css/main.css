@@ -73,7 +73,9 @@ body {
 	/*bottom: 175px;*/
 }
 
-
+.hide {
+	display: none;
+}
 
 /*Book CSS*/
 .book {
