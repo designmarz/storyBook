@@ -9,25 +9,34 @@ $(document).ready(function() {
  var whichView = 0;
 
  // var size = $('.chapter-list').length;
-	var height = function() {
+var	height = function() {
 		return $('.navbar-hidden').css('height');
+
 	};
-	height();
+
+// var setHeight = function() {
+// 	return $('.navbar-hidden').animate({ height: height()}, 200, function() {});
+// };
 
  // var height = $('.navbar-hidden').css('height');
 
 
 // needed to set css for visible // needed to set css for visible //
+	// HACK HACK HACK HACK HACK HACK HACK HACK HACK //
 $('<style>').prop('type', 'text/css').html('.visible { bottom: ' + height() + ';}').appendTo('head');
+	// HACK HACK HACK HACK HACK HACK HACK HACK HACK //
+
+var setStyle = function() {
+	// $('.navbar').animate({ height: height()}, 200, function() {});
+	$('<style>').prop('type', 'text/css').html('.visible { bottom: ' + height() + ';}').appendTo('head');
+};
+
 // needed to set css for visible // needed to set css for visible //
-
-
 
 // navbar menu slide up/down //
 
 $('.navbar-menu').click(function(){
     $('.navbar').toggleClass('visible', 500);
-    console.log('menu clicked');
     });
 $('.navbar-hidden').click(function(){
     $('.navbar').toggleClass('visible', 500);
@@ -37,17 +46,13 @@ $('.navbar-hidden').click(function(){
 
 
 // update UI
+
 var nav_counter_update = function(pos) {
 	$('.navbar-counter').text("Chapter: " + pos);
 };
 
-var chapter_desc_update = function(pos) {
-	var textUpdate = '#page_desc_' + pos;
-	$('.page-desc').hide();
-	$(textUpdate).show();
-	height();
-};
 // update UI
+
 
 // Chapter Section
 
@@ -63,9 +68,16 @@ for (var i = 0; i < pages.length; i++) {
 	}
 // Build list of images //
 
+
 // Build section for changing description text //
 
-
+var chapter_desc_update = function(pos) {
+	var textUpdate = '#page_desc_' + pos;
+	$('.page-desc').hide();
+	$(textUpdate).show();
+	height();
+	setStyle();
+};
 
 // Build section for changing description text //
 
@@ -145,4 +157,6 @@ nav_counter_update(list[whichView].slice(4,7));
 // debugging area, to be removed //
 // debugging area, to be removed //
 // debugging area, to be removed //
+
+// setStyle();
 });
