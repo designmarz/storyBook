@@ -2,17 +2,30 @@ $(document).ready(function() {
 /*jslint vars: true, plusplus: true, jquery: true, devel: true, nomen: true, indent: 4, maxerr: 50 */
 
 // DATA AREA * DATA AREA * DATA AREA * DATA AREA * DATA AREA * DATA AREA //
+// DATA AREA * DATA AREA * DATA AREA * DATA AREA * DATA AREA * DATA AREA //
+// DATA AREA * DATA AREA * DATA AREA * DATA AREA * DATA AREA * DATA AREA //
 
 
 $.getJSON( "data/story.json", function( data ) {
-  // var items = [];
-  $.each( data, function( key, val ) {
-    // items.push( "<li id='" + key + "'>" + val + "</li>" );
+	// var dataLength = Object.keys(data).length;
+	var dataChapters = Object.keys(data.chapters).length;
+	var items = []; 
+  $.each( data.chapters, function( key, val ) {
+  	// creates an array of image paths formated in li html //
+    items.push( "<li id='" + key + "'class='page'>" + val + "</li>" );
+
+    // smoke test //
     console.log("Key: " + key + " Value: " + val);
+    
   });
+  console.log(items);
+  // var testData = data;
+  console.log(dataChapters);
 });
 
 
+// DATA AREA * DATA AREA * DATA AREA * DATA AREA * DATA AREA * DATA AREA //
+// DATA AREA * DATA AREA * DATA AREA * DATA AREA * DATA AREA * DATA AREA //
 // DATA AREA * DATA AREA * DATA AREA * DATA AREA * DATA AREA * DATA AREA //
 
 
@@ -211,7 +224,19 @@ console.log(pulseIcon);
 // debugging area, to be removed ------------------------------------------//
 // debugging area, to be removed ------------------------------------------//
 console.log("vvvvvvv > Start debugging area");
-
+// console.log("
+//       ,_      _,
+//         '.__.'
+//    '-,   (__)   ,-'
+//      '._ .::. _.'
+//        _'(^^)'_
+//     _,` `>\/<` `,_
+//    `  ,-` )( `-,  `
+//       |  /==\  |
+//     ,-'  |=-|  '-,
+//          )-=(
+//          \__/
+// ");
 	
 // console.log(pulseStyle);
 	// console.log("------------------------------");
