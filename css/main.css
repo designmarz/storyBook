@@ -127,6 +127,7 @@ body {
     
   .pulse_holder .pulse_marker 
   {
+  	color: #fff;
     width: 16px;
     height: 16px;
     background: #099;

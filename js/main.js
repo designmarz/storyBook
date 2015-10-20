@@ -80,8 +80,8 @@ var chapter_desc_update = function(pos) {
 };
 
 // Build section for changing description text //
-
-
+// Plan on re-writing this for both buttons in one function //
+// with the ability to 
 
 // Chapter display navigation controls ----------------------->
 $('#prev_button').click(function(){
@@ -148,17 +148,25 @@ parseInt(screenW, 10);
 parseInt(bookW, 10);
 
 // This places the icon at the edge of the image by calculating the posistion
-var viewLeft = (parseInt(screenW, 10) - parseInt(bookW, 10)) / 2;
+// var viewLeft = (parseInt(screenW, 10) - parseInt(bookW, 10)) / 2;
+
+// -------------------------- //
+// Need to do a conversion form px to Screen % to keep posistioning consistent //
+//
+//
+// -------------------------- //
 
 var pulseIcon = $( "#pulsh_icon" );
 
 // Makes  icon draggable by user, need to absrtact and turn in to a function to create a edit mode
 pulseIcon.draggable({
-  // containment: "parent"
+  containment: "parent"
 });
 
 // var pulseStyleSetDefualt = 
-pulseIcon.attr("style", "left: "+(viewLeft+10)+"px; top: 10px;");
+// pulseIcon.attr("style", "left: "+(viewLeft+10)+"px; top: 10px;");
+
+pulseIcon.attr("style", "left: 15%; top: 1%;");
 
 var pulseStyle = pulseIcon.attr("style");
 
@@ -166,11 +174,13 @@ var pulseStyle = pulseIcon.attr("style");
 $("body").change(function() {
 	pulseStyle = pulseIcon.attr("style");
 	console.log(pulseIcon.attr("style"));
+	console.log("Body Change");
 });
 
 pulseIcon.change(function() {
 	pulseStyle = pulseIcon.attr("style");
 	console.log(pulseStyle);
+	console.log("Icon Change");
 });
 console.log(pulseIcon);
 
