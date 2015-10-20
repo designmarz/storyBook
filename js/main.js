@@ -142,13 +142,13 @@ nav_counter_update(list[whichView].slice(4,7));
 // $("#icon_holder").css("width", bookWidth);
 // $("#icon_holder").css("height", bookHeight);
 
-var bookW = $("#book_img").css("width");
-var screenW = screen.width;
-parseInt(screenW, 10);
-parseInt(bookW, 10);
+var bookW = parseInt($("#book_img").css("width"), 10);
+var screenW = parseInt(screen.width, 10);
+
 
 // This places the icon at the edge of the image by calculating the posistion
-// var viewLeft = (parseInt(screenW, 10) - parseInt(bookW, 10)) / 2;
+var viewLeft = (screenW - bookW) / 2;
+console.log(viewLeft);
 
 // -------------------------- //
 // Need to do a conversion form px to Screen % to keep posistioning consistent //
@@ -156,22 +156,33 @@ parseInt(bookW, 10);
 //
 // -------------------------- //
 
-var pulseIcon = $( "#pulsh_icon" );
+var pulseIcon = $( "#pulse_icon" );
+// var iconHolder = $("#icon_holder");
+
+
+
+
 
 // Makes  icon draggable by user, need to absrtact and turn in to a function to create a edit mode
 pulseIcon.draggable({
-  containment: "parent"
+  // containment: "parent"
+  containment: "#book_img", scroll: false
 });
 
-// var pulseStyleSetDefualt = 
-// pulseIcon.attr("style", "left: "+(viewLeft+10)+"px; top: 10px;");
 
-pulseIcon.attr("style", "left: 15%; top: 1%;");
+// iconHolder.draggable({
+  // containment: "parent"
+// });
+
+// var pulseStyleSetDefualt = 
+// iconHolder.attr("style", "left: "+(viewLeft+30)+"px; top: 10px;");
+pulseIcon.attr("style", "left: "+(viewLeft+30)+"px; top: 10px;");
+// pulseIcon.attr("style", "left: 15%; top: 1%;");
 
 var pulseStyle = pulseIcon.attr("style");
 
 
-$("body").change(function() {
+$("#body").change(function() {
 	pulseStyle = pulseIcon.attr("style");
 	console.log(pulseIcon.attr("style"));
 	console.log("Body Change");

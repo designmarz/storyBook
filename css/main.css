@@ -1,6 +1,12 @@
 
 /*Global CSS*/
 
+html {
+    background-color: gray;
+}
+
+
+
 body {
     
 }
@@ -131,7 +137,7 @@ body {
     width: 16px;
     height: 16px;
     background: #099;
-    border-radius: 28px;
+    border-radius: 50%;
   }
  
   .pulse_holder .pulse_rays 
@@ -153,8 +159,8 @@ body {
     -ms-border-radius: 100px;
     border-radius: 100px;
     /* Giving Animation Function */
-    -webkit-animation: pulse 2s linear infinite;
-    -moz-animation: pulse 2s linear infinite; 
+    -webkit-animation: pulse 1s linear infinite;
+    -moz-animation: pulse 1s linear infinite; 
     border-image: initial;
   }
 
