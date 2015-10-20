@@ -1,6 +1,21 @@
 $(document).ready(function() {
 /*jslint vars: true, plusplus: true, jquery: true, devel: true, nomen: true, indent: 4, maxerr: 50 */
 
+// DATA AREA * DATA AREA * DATA AREA * DATA AREA * DATA AREA * DATA AREA //
+
+
+$.getJSON( "data/story.json", function( data ) {
+  // var items = [];
+  $.each( data, function( key, val ) {
+    // items.push( "<li id='" + key + "'>" + val + "</li>" );
+    console.log("Key: " + key + " Value: " + val);
+  });
+});
+
+
+// DATA AREA * DATA AREA * DATA AREA * DATA AREA * DATA AREA * DATA AREA //
+
+
 // /*global define */
  var book = $('.book');
  var chapters = $('.chapter-list');
@@ -138,7 +153,6 @@ nav_counter_update(list[whichView].slice(4,7));
 // var bookWidth = $("#book_img").css("width");
 // var bookHeight = $("#book_img").css("height");
 
-
 // $("#icon_holder").css("width", bookWidth);
 // $("#icon_holder").css("height", bookHeight);
 
@@ -159,16 +173,11 @@ console.log(viewLeft);
 var pulseIcon = $( "#pulse_icon" );
 // var iconHolder = $("#icon_holder");
 
-
-
-
-
 // Makes  icon draggable by user, need to absrtact and turn in to a function to create a edit mode
 pulseIcon.draggable({
   // containment: "parent"
   containment: "#book_img", scroll: false
 });
-
 
 // iconHolder.draggable({
   // containment: "parent"
@@ -180,7 +189,6 @@ pulseIcon.attr("style", "left: "+(viewLeft+30)+"px; top: 10px;");
 // pulseIcon.attr("style", "left: 15%; top: 1%;");
 
 var pulseStyle = pulseIcon.attr("style");
-
 
 $("#body").change(function() {
 	pulseStyle = pulseIcon.attr("style");
