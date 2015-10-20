@@ -116,12 +116,13 @@ body {
     100% {opacity: 0; -moz-transform: scale(1);}
   }
   
-  #pulsh_icon
+
+  .pulse_holder
   {
     display: block;
     position: absolute;
     top: 100px;
-    left: 350px;
+    left: 100px;
   }
     
   .pulse_holder .pulse_marker 

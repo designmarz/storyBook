@@ -134,29 +134,57 @@ nav_counter_update(list[whichView].slice(4,7));
 
 
 // Touch icon controls ----------------------->
-var pulseStyle = $( "#pulsh_icon" );
+
+// var bookWidth = $("#book_img").css("width");
+// var bookHeight = $("#book_img").css("height");
+
+
+// $("#icon_holder").css("width", bookWidth);
+// $("#icon_holder").css("height", bookHeight);
+
+var bookW = $("#book_img").css("width");
+var screenW = screen.width;
+parseInt(screenW, 10);
+parseInt(bookW, 10);
+
+// This places the icon at the edge of the image by calculating the posistion
+var viewLeft = (parseInt(screenW, 10) - parseInt(bookW, 10)) / 2;
+
+var pulseIcon = $( "#pulsh_icon" );
 
 // Makes  icon draggable by user, need to absrtact and turn in to a function to create a edit mode
-$( "#pulsh_icon" ).draggable();
-
-pulseStyle.attr("style", "left: 0px; top: 0px;");
-
-
-pulseStyle.click(function() {
-	console.log($(this));
-
+pulseIcon.draggable({
+  // containment: "parent"
 });
+
+// var pulseStyleSetDefualt = 
+pulseIcon.attr("style", "left: "+(viewLeft+10)+"px; top: 10px;");
+
+var pulseStyle = pulseIcon.attr("style");
+
+
+$("body").change(function() {
+	pulseStyle = pulseIcon.attr("style");
+	console.log(pulseIcon.attr("style"));
+});
+
+pulseIcon.change(function() {
+	pulseStyle = pulseIcon.attr("style");
+	console.log(pulseStyle);
+});
+console.log(pulseIcon);
 
 
 // Touch icon controls ----------------------->
 
+// console.log(" ");
 // debugging area, to be removed ------------------------------------------//
 // debugging area, to be removed ------------------------------------------//
 // debugging area, to be removed ------------------------------------------//
+console.log("vvvvvvv > Start debugging area");
 
-
-	console.log($(pulseStyle).attr("style"));
-
+	
+// console.log(pulseStyle);
 	// console.log("------------------------------");
 	// for (var i = 0; i < chapters.length; i++) {
 	// 	console.log(chapters[i]);
@@ -166,26 +194,32 @@ pulseStyle.click(function() {
 	
 	// console.log("------------------------------");
 	// // console.log($('.visible').css('bottom'));
-	// console.log("Book: ");
+	console.log("Book: ");
 	console.log(book);
-	// console.log("Chapters: ");
+	console.log("Chapters: ");
 	console.log(chapters);
 	// console.log("Pages: ");
 	// console.log(pages);
 	// console.log("------------------------------");
-  	console.log('Doc Ready');
+  	
 
+console.log("^^^^^^^ > End debugging area");
 // debugging area, to be removed ------------------------------------------//
 // debugging area, to be removed ------------------------------------------//
 // debugging area, to be removed ------------------------------------------//
+// console.log(" ");
 
 // setStyle();
 
+// < ------- < HACK < ------- < //
 function buttonClick() {
 	$('#next_button').click();
 	$('#prev_button').click();
 }
 
 setTimeout(buttonClick, 10);
+// > ------- > HACK > ------- > //
 
+
+console.log('Doc Ready');
 });
