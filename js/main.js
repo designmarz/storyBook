@@ -132,9 +132,30 @@ $('#next_button').click(function(){
 $('#book_img').attr('src',list[whichView]);
 nav_counter_update(list[whichView].slice(4,7));
 
-// debugging area, to be removed //
-// debugging area, to be removed //
-// debugging area, to be removed //
+
+// Touch icon controls ----------------------->
+var pulseStyle = $( "#pulsh_icon" );
+
+// Makes  icon draggable by user, need to absrtact and turn in to a function to create a edit mode
+$( "#pulsh_icon" ).draggable();
+
+pulseStyle.attr("style", "left: 0px; top: 0px;");
+
+
+pulseStyle.click(function() {
+	console.log($(this));
+
+});
+
+
+// Touch icon controls ----------------------->
+
+// debugging area, to be removed ------------------------------------------//
+// debugging area, to be removed ------------------------------------------//
+// debugging area, to be removed ------------------------------------------//
+
+
+	console.log($(pulseStyle).attr("style"));
 
 	// console.log("------------------------------");
 	// for (var i = 0; i < chapters.length; i++) {
@@ -154,9 +175,17 @@ nav_counter_update(list[whichView].slice(4,7));
 	// console.log("------------------------------");
   	console.log('Doc Ready');
 
-// debugging area, to be removed //
-// debugging area, to be removed //
-// debugging area, to be removed //
+// debugging area, to be removed ------------------------------------------//
+// debugging area, to be removed ------------------------------------------//
+// debugging area, to be removed ------------------------------------------//
 
 // setStyle();
+
+function buttonClick() {
+	$('#next_button').click();
+	$('#prev_button').click();
+}
+
+setTimeout(buttonClick, 10);
+
 });
