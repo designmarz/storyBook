@@ -4,26 +4,46 @@ $(document).ready(function() {
 // DATA AREA * DATA AREA * DATA AREA * DATA AREA * DATA AREA * DATA AREA //
 // DATA AREA * DATA AREA * DATA AREA * DATA AREA * DATA AREA * DATA AREA //
 // DATA AREA * DATA AREA * DATA AREA * DATA AREA * DATA AREA * DATA AREA //
+// console.log("// DATA AREA * DATA AREA * DATA AREA * DATA AREA * DATA AREA * DATA AREA //");
 
+// console.log($.getJSON( "data/story.json").story1);
 
 $.getJSON( "data/story.json", function( data ) {
-	// var dataLength = Object.keys(data).length;
-	var dataChapters = Object.keys(data.chapters).length;
-	var items = []; 
-  $.each( data.chapters, function( key, val ) {
-  	// creates an array of image paths formated in li html //
-    items.push( "<li id='" + key + "'class='page'>" + val + "</li>" );
+	// var testData = data;
+	var chapterPages = []; 
+	var chapterStory = [];
+	
 
-    // smoke test //
-    console.log("Key: " + key + " Value: " + val);
-    
-  });
-  console.log(items);
-  // var testData = data;
-  console.log(dataChapters);
+// need to create another eachLoop grab all chapters, will need to modify code a little for that move //
+		console.log("// Page images loop//");
+		  $.each( data.book.chapter1.pages, function( key, val ) {
+		    chapterPages.push( "<li 'class='page' id='" + key + "'>" + val + "</li>" );
+		    // smoke test //
+		    // console.log("Key: " + key + " Value: " + val);
+		    
+		  });
+
+		console.log("// Page stories loop//");
+		  $.each( data.book.chapter1.stories, function( key, val ) {
+		  	// <p class='page-desc' id='page_desc_1-0'>
+		    chapterStory.push( "<p class='page-desc' id='" + key + "'>" + val + "</p>" );
+		    // smoke test //
+		    // console.log("Key: " + key + " Value: " + val);
+		    
+		  });
+// need to create anoth each to grab all chapters
+
+console.log("// Page images//");
+  console.log(chapterPages);
+console.log("// Page stories//");
+  console.log(chapterStory);
+  
+  // console.log(data);
+
 });
 
 
+console.log("// DATA AREA * DATA AREA * DATA AREA * DATA AREA * DATA AREA * DATA AREA //");
 // DATA AREA * DATA AREA * DATA AREA * DATA AREA * DATA AREA * DATA AREA //
 // DATA AREA * DATA AREA * DATA AREA * DATA AREA * DATA AREA * DATA AREA //
 // DATA AREA * DATA AREA * DATA AREA * DATA AREA * DATA AREA * DATA AREA //
