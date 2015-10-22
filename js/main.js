@@ -8,28 +8,50 @@ $(document).ready(function() {
 
 // console.log($.getJSON( "data/story_array.json"));
 
-// var testJSONData = $.getJSON( "data/story_array.json");
+testJSONData = $.getJSON( "data/story_array.json");
+
+
 
 $.getJSON( "data/story_array.json", function( data ) {
 	console.log(data.book);
 	var chapterPages = []; 
 	var chapterStory = [];	
 
+		// for (var i = 0; i < data.book.length; i++) {
+		// 	for (var j = 0; j < 5 ; j++) {
+		// 		var key = data.book[i][j].image_path;
+		// 		chapterPages.push( "<li class='page'>" + key + "</li>" );
+		// 		var val = data.book[i][j].page_desc;
+		// 		chapterStory.push( "<p class='page-desc' id='page_desc_"+(i+1)+"-"+j+"'>" + val + "</p>" );
+		// 		console.log("---------------------------");
+		// 	}
+
+		// }
+
+
 		for (var i = 0; i < data.book.length; i++) {
-			for (var j = 0; j < 2 ; j++) {
-				var key = data.book[i][j].image_path;
-				chapterPages.push( "<li class='page'>" + key + "</li>" );
-				var val = data.book[i][j].page_desc;
-				chapterStory.push( "<p class='page-desc' id='page_desc_"+i+"-"+j+"'>" + val + "</p>" );
+			// for (var j = 0; j < 5 ; j++) {
+				// var key = data.book[i][j].image_path;
+				// var val = data.book[i][j].page_desc;
+				
+				// chapterPages.push( "<li class='page'>" + key + "</li>" );
+				
+				// chapterStory.push( "<p class='page-desc' id='page_desc_"+(i+1)+"-"+j+"'>" + val + "</p>" );
 				console.log("---------------------------");
-			}
+
+
+				 $.each( data.book[i], function( key, val ) {
+		    		chapterPages.push( "<li class='page'>img/" + val.image_path + "</li>" );
+		  			chapterStory.push( "<p class='page-desc' id='page_desc_" + i + "-0'>" + val.page_desc + "</p>" );
+		  		});
+			// }
 
 		}
 
 // <li class='page'>img/1-0.jpg</li>
 // <li class="page">img/1-0.jpg</li>
 // <p class="page-desc" id="page_desc_1-3">
-// <p class='page-desc' id='page_desc_0-0'>Lorem ipsu…dolor sit amet, consectetur adipisicing elit.</p>
+// <p class='page-desc' id='page_desc_1-0'>Lorem ipsu…olor sit amet, consectetur adipisicing elit..</p>
 		
 
 		// console.log("// Page images loop//");
@@ -243,7 +265,7 @@ var screenW = parseInt(screen.width, 10);
 
 // This places the icon at the edge of the image by calculating the posistion
 var viewLeft = (screenW - bookW) / 2;
-console.log(viewLeft);
+// console.log(viewLeft);
 
 // -------------------------- //
 // Need to do a conversion form px to Screen % to keep posistioning consistent //
@@ -282,7 +304,7 @@ pulseIcon.change(function() {
 	console.log(pulseStyle);
 	console.log("Icon Change");
 });
-console.log(pulseIcon);
+// console.log(pulseIcon);
 
 
 // Touch icon controls ----------------------->
