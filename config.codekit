@@ -40,6 +40,17 @@
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1
 		},
+	"\/data\/story_array.json": {
+		"fileType": 524288,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/data\/story_array.json",
+		"orderOutput": 0,
+		"outputAbbreviatedPath": "\/data\/story_array-min.json",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1
+		},
 	"\/data\/storybk.json": {
 		"fileType": 524288,
 		"ignore": 1,
