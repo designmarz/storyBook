@@ -30,6 +30,8 @@ $.getJSON( "data/story_array.json", function( data ) {
 
 
 		for (var i = 0; i < data.book.length; i++) {
+
+			chapterPages.push( "<ul class='chapter-list' id='chapter_"+(i+1)+"'>" );
 			// for (var j = 0; j < 5 ; j++) {
 				// var key = data.book[i][j].image_path;
 				// var val = data.book[i][j].page_desc;
@@ -44,9 +46,20 @@ $.getJSON( "data/story_array.json", function( data ) {
 		    		chapterPages.push( "<li class='page'>img/" + val.image_path + "</li>" );
 		  			chapterStory.push( "<p class='page-desc' id='page_desc_" + i + "-0'>" + val.page_desc + "</p>" );
 		  		});
+				 chapterPages.push( "</ul>" );
 			// }
 
 		}
+
+
+			// <ul class="chapter-list" id="chapter_1">
+			// 	<li class="page">img/1-0.jpg</li>
+			// 	<li class="page">img/1-1.jpg</li>
+			// 	<li class="page">img/1-2.jpg</li>
+			// 	<li class="page">img/1-3.jpg</li>
+			// </ul>
+
+
 
 // <li class='page'>img/1-0.jpg</li>
 // <li class="page">img/1-0.jpg</li>
