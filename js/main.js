@@ -3,9 +3,12 @@ $(document).ready(function() {
 // var testJSONData = $.getJSON( "data/story_array.json");
 
 $.getJSON( "data/story_array.json", function( data ) {
+	/*jshint loopfunc: true */
 	console.log(data.book);
 	var chapterPages = []; 
-	var chapterStory = [];	
+	var chapterStory = [];
+	var chapterTop 	 = [];
+	var chapterLeft  = [];
 		for (var i = 0; i < data.book.length; i++) {
 			var t = 0;
 		// needed to start a new ul 
@@ -16,6 +19,8 @@ $.getJSON( "data/story_array.json", function( data ) {
 				$.each( data.book[i], function( key, val ) {
 		    		chapterPages.push( "<li class='page'>img/" + val.image_path + "</li>" );
 		  			chapterStory.push( "<p class='page-desc' id='page_desc_" + (i+1) + "-"+t+"'>" + val.page_desc + "</p>" );
+		  			chapterTop.push(val.top)
+		  			chapterLeft.push(val.left);
 		  			t++;
 		  		});
 		
@@ -65,7 +70,6 @@ var	height = function() {
 
  // var height = $('.navbar-hidden').css('height');
 
-
 // needed to set css for visible // needed to set css for visible //
 	// HACK HACK HACK HACK HACK HACK HACK HACK HACK //
 $('<style>').prop('type', 'text/css').html('.visible { bottom: ' + height() + ';}').appendTo('head');
@@ -79,7 +83,6 @@ var setStyle = function() {
 // needed to set css for visible // needed to set css for visible //
 
 // navbar menu slide up/down //
-
 $('.navbar-menu').click(function(){
     $('.navbar').toggleClass('visible', 500);
     });
@@ -90,12 +93,27 @@ $('.navbar-hidden').click(function(){
 // navbar menu slide up/down //
 
 
-// update UI
+// touch icon settings //
 
+var set_icon_style = function() {
+	// body...
+};
+
+
+var touch_icon_update = function(pos) {
+
+	
+};
+
+
+
+
+// touch icon settings //
+
+// update UI
 var nav_counter_update = function(pos) {
 	$('.navbar-counter').text("Chapter: " + pos);
 };
-
 // update UI
 
 
@@ -133,20 +151,18 @@ $('#prev_button').click(function(){
 // Need to add if check so coutnters can't
 // go past the number of pages and chapters
 
-    	// Controls whic page img we are one //
+    	// Controls which page img we are one //
     	whichView -= 1;
     	// allows us to use slice to pass to the 
     	// chapter display function
 		var location = list[whichView];
 // This changes the img src of the book-view image
         $('#book_img').attr('src',list[whichView]);
-        
-
-
-        // console.log(whichView + " " + list[whichView]);
+       // console.log(whichView + " " + list[whichView]);
        // passes current location to the nav update function
         nav_counter_update(location.slice(4,7));
         chapter_desc_update(location.slice(4,7));
+        touch_icon_update(whichView);
     }
 );
 
@@ -163,11 +179,11 @@ $('#next_button').click(function(){
         $('#book_img').attr('src',list[whichView]);
      	
 
-
-     	// console.log(whichView + " " + list[whichView]);
+		
      // passes current location to the nav update function
      	nav_counter_update(location.slice(4,7));
      	chapter_desc_update(location.slice(4,7));
+     	touch_icon_update(whichView);
     }
 );
 // Chapter display navigation controls ----------------------->
@@ -178,7 +194,7 @@ $('#book_img').attr('src',list[whichView]);
 nav_counter_update(list[whichView].slice(4,7));
 
 
-// Touch icon controls ----------------------->
+// Touch icon controls -----------------------> Touch icon controls -----------------------> Touch icon controls ----------------------->
 
 // var bookWidth = $("#book_img").css("width");
 // var bookHeight = $("#book_img").css("height");
@@ -234,7 +250,7 @@ pulseIcon.change(function() {
 // console.log(pulseIcon);
 
 
-// Touch icon controls ----------------------->
+// Touch icon controls -----------------------> Touch icon controls -----------------------> Touch icon controls ----------------------->
 
 // console.log(" ");
 // debugging area, to be removed ------------------------------------------//
