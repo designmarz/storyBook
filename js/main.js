@@ -1,136 +1,50 @@
-$(document).ready(function() {
 /*jslint vars: true, plusplus: true, jquery: true, devel: true, nomen: true, indent: 4, maxerr: 50 */
-
-// DATA AREA * DATA AREA * DATA AREA * DATA AREA * DATA AREA * DATA AREA //
-// DATA AREA * DATA AREA * DATA AREA * DATA AREA * DATA AREA * DATA AREA //
-// DATA AREA * DATA AREA * DATA AREA * DATA AREA * DATA AREA * DATA AREA //
-// console.log("// DATA AREA * DATA AREA * DATA AREA * DATA AREA * DATA AREA * DATA AREA //");
-
-// console.log($.getJSON( "data/story_array.json"));
-
-testJSONData = $.getJSON( "data/story_array.json");
-
-
+$(document).ready(function() {
+// var testJSONData = $.getJSON( "data/story_array.json");
 
 $.getJSON( "data/story_array.json", function( data ) {
 	console.log(data.book);
 	var chapterPages = []; 
 	var chapterStory = [];	
-
-		// for (var i = 0; i < data.book.length; i++) {
-		// 	for (var j = 0; j < 5 ; j++) {
-		// 		var key = data.book[i][j].image_path;
-		// 		chapterPages.push( "<li class='page'>" + key + "</li>" );
-		// 		var val = data.book[i][j].page_desc;
-		// 		chapterStory.push( "<p class='page-desc' id='page_desc_"+(i+1)+"-"+j+"'>" + val + "</p>" );
-		// 		console.log("---------------------------");
-		// 	}
-
-		// }
-
-
 		for (var i = 0; i < data.book.length; i++) {
-
+			var t = 0;
+		// needed to start a new ul 
 			chapterPages.push( "<ul class='chapter-list' id='chapter_"+(i+1)+"'>" );
-			// for (var j = 0; j < 5 ; j++) {
-				// var key = data.book[i][j].image_path;
-				// var val = data.book[i][j].page_desc;
-				
-				// chapterPages.push( "<li class='page'>" + key + "</li>" );
-				
-				// chapterStory.push( "<p class='page-desc' id='page_desc_"+(i+1)+"-"+j+"'>" + val + "</p>" );
-				console.log("---------------------------");
-
-
-				 $.each( data.book[i], function( key, val ) {
-		    		chapterPages.push( "<li class='page'>img/" + val.image_path + "</li>" );
-		  			chapterStory.push( "<p class='page-desc' id='page_desc_" + i + "-0'>" + val.page_desc + "</p>" );
-		  		});
-				 chapterPages.push( "</ul>" );
-			// }
-
-		}
-
-
-			// <ul class="chapter-list" id="chapter_1">
-			// 	<li class="page">img/1-0.jpg</li>
-			// 	<li class="page">img/1-1.jpg</li>
-			// 	<li class="page">img/1-2.jpg</li>
-			// 	<li class="page">img/1-3.jpg</li>
-			// </ul>
-
-
-
-// <li class='page'>img/1-0.jpg</li>
-// <li class="page">img/1-0.jpg</li>
-// <p class="page-desc" id="page_desc_1-3">
-// <p class='page-desc' id='page_desc_1-0'>Lorem ipsu…olor sit amet, consectetur adipisicing elit..</p>
 		
 
-		// console.log("// Page images loop//");
 
-		  // $.each( data.book, function( key, val ) {
-		  //   chapterPages.push( "<li 'class='page' id='" + key + "'>" + val + "</li>" );
-		    
-		  // });
+				$.each( data.book[i], function( key, val ) {
+		    		chapterPages.push( "<li class='page'>img/" + val.image_path + "</li>" );
+		  			chapterStory.push( "<p class='page-desc' id='page_desc_" + (i+1) + "-"+t+"'>" + val.page_desc + "</p>" );
+		  			t++;
+		  		});
+		
 
-		// console.log("// Page stories loop//");
+				 chapterPages.push( "</ul>" );
+		// needed to end a new ul 
+			console.log("-------------- Chapter "+(i+1)+" -------------");
+			console.log("// Page images //");
+			console.log(chapterPages);
+			console.log("// Page stories //");
+			console.log(chapterStory);
 
-		  // $.each( data.book, function( key, val ) {
-		  // 	// <p class='page-desc' id='page_desc_1-0'>
-		  //   chapterStory.push( "<p class='page-desc' id='" + key + "'>" + val + "</p>" );
-		    
-		  // });
-// need to create anoth each to grab all chapters
+			t = 0;
+		}
+			var bookImageString = "";
+			for (var k = 0; k < chapterPages.length; k++) {
+				bookImageString+=chapterPages[k];
+			}
 
-console.log("// Page images//");
-  console.log(chapterPages);
-console.log("// Page stories//");
-  console.log(chapterStory);
-  console.log("// End new JSON //");
-});
+			var bookStoryString = "";
+			for (var q = 0; q < chapterStory.length; q++) {
+				bookStoryString+=chapterStory[q];
+			}
 
-
- // ____________________
-
-// $.getJSON( "data/story.json", function( data ) {
-// 	// testData = data;
-// 	var chapterPages = []; 
-// 	var chapterStory = [];	
-// // need to create another eachLoop grab all chapters, will need to modify code a little for that move //
-// 		console.log("// Page images loop OLD OLD//");
-// 		  $.each( data.book.chapter1.pages, function( key, val ) {
-// 		    chapterPages.push( "<li 'class='page' id='" + key + "'>" + val + "</li>" );
-// 		    // smoke test //
-// 		    // console.log("Key: " + key + " Value: " + val);
-		    
-// 		  });
-
-// 		console.log("// Page stories loop OLD OLD//");
-// 		  $.each( data.book.chapter1.stories, function( key, val ) {
-// 		  	// <p class='page-desc' id='page_desc_1-0'>
-// 		    chapterStory.push( "<p class='page-desc' id='" + key + "'>" + val + "</p>" );
-// 		    // smoke test //
-// 		    // console.log("Key: " + key + " Value: " + val);
-		    
-// 		  });
-// // need to create anoth each to grab all chapters
-
-// console.log("// Page images OLD OLD//");
-//   console.log(chapterPages);
-// console.log("// Page stories OLD OLD//");
-//   console.log(chapterStory);
-  
-//   // console.log(data);
-
-// });
+$( ".book" ).append(bookImageString);
+$( ".page-stories" ).append(bookStoryString);
 
 
 console.log("// DATA AREA * DATA AREA * DATA AREA * DATA AREA * DATA AREA * DATA AREA //");
-// DATA AREA * DATA AREA * DATA AREA * DATA AREA * DATA AREA * DATA AREA //
-// DATA AREA * DATA AREA * DATA AREA * DATA AREA * DATA AREA * DATA AREA //
-// DATA AREA * DATA AREA * DATA AREA * DATA AREA * DATA AREA * DATA AREA //
-
 
 // /*global define */
  var book = $('.book');
@@ -188,13 +102,13 @@ var nav_counter_update = function(pos) {
 // Chapter Section
 
 // Build list of images //
-for (var i = 0; i < pages.length; i++) {
+for (var y = 0; y < pages.length; y++) {
 	// figure out the length need to grab the whole file path
 	// well need to re-write this when I change to adding a setup page
 	// or upload section
-	var remove = pages[i].outerHTML.length - 5;
+	var remove = pages[y].outerHTML.length - 5;
 		list.push(
-		pages[i].outerHTML.slice(17,remove)
+		pages[y].outerHTML.slice(17,remove)
 		);
 	}
 // Build list of images //
@@ -376,7 +290,8 @@ function buttonClick() {
 
 setTimeout(buttonClick, 10);
 // > ------- > HACK > ------- > //
-
+});
 
 console.log('Doc Ready');
+
 });
