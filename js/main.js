@@ -19,7 +19,7 @@ $.getJSON( "data/story_array.json", function( data ) {
 				$.each( data.book[i], function( key, val ) {
 		    		chapterPages.push( "<li class='page'>img/" + val.image_path + "</li>" );
 		  			chapterStory.push( "<p class='page-desc' id='page_desc_" + (i+1) + "-"+t+"'>" + val.page_desc + "</p>" );
-		  			chapterTop.push(val.top)
+		  			chapterTop.push(val.top);
 		  			chapterLeft.push(val.left);
 		  			t++;
 		  		});
@@ -27,11 +27,11 @@ $.getJSON( "data/story_array.json", function( data ) {
 
 				 chapterPages.push( "</ul>" );
 		// needed to end a new ul 
-			console.log("-------------- Chapter "+(i+1)+" -------------");
-			console.log("// Page images //");
-			console.log(chapterPages);
-			console.log("// Page stories //");
-			console.log(chapterStory);
+			// console.log("-------------- Chapter "+(i+1)+" -------------");
+			// console.log("// Page images //");
+			// console.log(chapterPages);
+			// console.log("// Page stories //");
+			// console.log(chapterStory);
 
 			t = 0;
 		}
@@ -48,6 +48,15 @@ $.getJSON( "data/story_array.json", function( data ) {
 $( ".book" ).append(bookImageString);
 $( ".page-stories" ).append(bookStoryString);
 
+var chapters = $('.chapter-list');
+var pages = $('.page');
+
+list_builder(pages);
+setup_buttons();
+	
+intSetup();
+
+});
 
 console.log("// DATA AREA * DATA AREA * DATA AREA * DATA AREA * DATA AREA * DATA AREA //");
 
@@ -72,7 +81,7 @@ var	height = function() {
 
 // needed to set css for visible // needed to set css for visible //
 	// HACK HACK HACK HACK HACK HACK HACK HACK HACK //
-$('<style>').prop('type', 'text/css').html('.visible { bottom: ' + height() + ';}').appendTo('head');
+// $('<style>').prop('type', 'text/css').html('.visible { bottom: ' + height() + ';}').appendTo('head');
 	// HACK HACK HACK HACK HACK HACK HACK HACK HACK //
 
 var setStyle = function() {
@@ -93,22 +102,7 @@ $('.navbar-hidden').click(function(){
 // navbar menu slide up/down //
 
 
-// touch icon settings //
 
-var set_icon_style = function() {
-	// body...
-};
-
-
-var touch_icon_update = function(pos) {
-
-	
-};
-
-
-
-
-// touch icon settings //
 
 // update UI
 var nav_counter_update = function(pos) {
@@ -120,14 +114,18 @@ var nav_counter_update = function(pos) {
 // Chapter Section
 
 // Build list of images //
-for (var y = 0; y < pages.length; y++) {
-	// figure out the length need to grab the whole file path
-	// well need to re-write this when I change to adding a setup page
-	// or upload section
-	var remove = pages[y].outerHTML.length - 5;
-		list.push(
-		pages[y].outerHTML.slice(17,remove)
-		);
+function list_builder(pages) {
+	for (var y = 0; y < pages.length; y++) {
+		// figure out the length need to grab the whole file path
+		// well need to re-write this when I change to adding a setup page
+		// or upload section
+		var remove = pages[y].outerHTML.length - 5;
+			list.push(
+			pages[y].outerHTML.slice(17,remove)
+
+			);
+		}
+
 	}
 // Build list of images //
 
@@ -146,111 +144,56 @@ var chapter_desc_update = function(pos) {
 // Plan on re-writing this for both buttons in one function //
 // with the ability to 
 
-// Chapter display navigation controls ----------------------->
-$('#prev_button').click(function(){
-// Need to add if check so coutnters can't
-// go past the number of pages and chapters
+// <----------------------- Chapter display navigation controls ----------------------->
+var setup_buttons = function() {
+	$('#prev_button').click(function(){
+	// Need to add if check so coutnters can't
+	// go past the number of pages and chapters
 
-    	// Controls which page img we are one //
-    	whichView -= 1;
-    	// allows us to use slice to pass to the 
-    	// chapter display function
-		var location = list[whichView];
-// This changes the img src of the book-view image
-        $('#book_img').attr('src',list[whichView]);
-       // console.log(whichView + " " + list[whichView]);
-       // passes current location to the nav update function
-        nav_counter_update(location.slice(4,7));
-        chapter_desc_update(location.slice(4,7));
-        touch_icon_update(whichView);
-    }
-);
+	    	// Controls which page img we are on //
+	    	whichView -= 1;
+	    	// allows us to use slice to pass to the 
+	    	// chapter display function
+			var location = list[whichView];
+	// This changes the img src of the book-view image
+	        $('#book_img').attr('src',list[whichView]);
+	       // passes current location to the nav update function
+	        nav_counter_update(location.slice(4,7));
+	        chapter_desc_update(location.slice(4,7));
+	        // touch_icon_update(whichView);
+	    }
+	);
+	$('#next_button').click(function(){
+	// Need to add if check so counters can't
+	// go past the number of pages and chapters
 
-$('#next_button').click(function(){
-// Need to add if check so coutnters can't
-// go past the number of pages and chapters
-
-    	// Controls whic page img we are one //
-    	whichView += 1;
-    	// allows us to use slice to pass to the 
-    	// chapter display function
-		var location = list[whichView];
-// This changes the img src of the book-view image
-        $('#book_img').attr('src',list[whichView]);
-     	
-
-		
-     // passes current location to the nav update function
-     	nav_counter_update(location.slice(4,7));
-     	chapter_desc_update(location.slice(4,7));
-     	touch_icon_update(whichView);
-    }
-);
-// Chapter display navigation controls ----------------------->
+	    	// Controls whic page img we are one //
+	    whichView += 1;
+	    	// allows us to use slice to pass to the 
+	    	// chapter display function
+			var location = list[whichView];
+		// This changes the img src of the book-view image
+	        $('#book_img').attr('src',list[whichView]);
+	     // passes current location to the nav update function
+	     	nav_counter_update(location.slice(4,7));
+	     	chapter_desc_update(location.slice(4,7));
+	     	// touch_icon_update(whichView);
+	    }
+		);
+};
+// <----------------------- Chapter display navigation controls ----------------------->
 
 // Set the first image
 // Future: Add defualt image view(possibly allow some way to set a logo?)
-$('#book_img').attr('src',list[whichView]);
-nav_counter_update(list[whichView].slice(4,7));
+
+var intSetup = function() {
+	// list_builder();
+	$('#book_img').attr('src',list[whichView]);
+	nav_counter_update(list[whichView].slice(4,7));
+};
 
 
-// Touch icon controls -----------------------> Touch icon controls -----------------------> Touch icon controls ----------------------->
 
-// var bookWidth = $("#book_img").css("width");
-// var bookHeight = $("#book_img").css("height");
-
-// $("#icon_holder").css("width", bookWidth);
-// $("#icon_holder").css("height", bookHeight);
-
-var bookW = parseInt($("#book_img").css("width"), 10);
-var screenW = parseInt(screen.width, 10);
-
-
-// This places the icon at the edge of the image by calculating the posistion
-var viewLeft = (screenW - bookW) / 2;
-// console.log(viewLeft);
-
-// -------------------------- //
-// Need to do a conversion form px to Screen % to keep posistioning consistent //
-//
-//
-// -------------------------- //
-
-var pulseIcon = $( "#pulse_icon" );
-// var iconHolder = $("#icon_holder");
-
-// Makes  icon draggable by user, need to absrtact and turn in to a function to create a edit mode
-pulseIcon.draggable({
-  // containment: "parent"
-  containment: "#book_img", scroll: false
-});
-
-// iconHolder.draggable({
-  // containment: "parent"
-// });
-
-// var pulseStyleSetDefualt = 
-// iconHolder.attr("style", "left: "+(viewLeft+30)+"px; top: 10px;");
-pulseIcon.attr("style", "left: "+(viewLeft+30)+"px; top: 10px;");
-// pulseIcon.attr("style", "left: 15%; top: 1%;");
-
-var pulseStyle = pulseIcon.attr("style");
-
-$("#body").change(function() {
-	pulseStyle = pulseIcon.attr("style");
-	console.log(pulseIcon.attr("style"));
-	console.log("Body Change");
-});
-
-pulseIcon.change(function() {
-	pulseStyle = pulseIcon.attr("style");
-	console.log(pulseStyle);
-	console.log("Icon Change");
-});
-// console.log(pulseIcon);
-
-
-// Touch icon controls -----------------------> Touch icon controls -----------------------> Touch icon controls ----------------------->
 
 // console.log(" ");
 // debugging area, to be removed ------------------------------------------//
@@ -306,8 +249,8 @@ function buttonClick() {
 
 setTimeout(buttonClick, 10);
 // > ------- > HACK > ------- > //
-});
 
+// intSetup();
 console.log('Doc Ready');
 
 });
