@@ -10,7 +10,8 @@ $.getJSON( "data/story_array.json", function( data ) {
 	var chapterTop 	 = [];
 	var chapterLeft  = [];
 		for (var i = 0; i < data.book.length; i++) {
-			var t = 0;
+			 var t = 0; // t keeps track of the page, resets to 0 on exit form loop.
+			 			// Future: start page on 1 and not 0
 		// needed to start a new ul 
 			chapterPages.push( "<ul class='chapter-list' id='chapter_"+(i+1)+"'>" );
 		
@@ -27,12 +28,6 @@ $.getJSON( "data/story_array.json", function( data ) {
 
 				 chapterPages.push( "</ul>" );
 		// needed to end a new ul 
-			// console.log("-------------- Chapter "+(i+1)+" -------------");
-			// console.log("// Page images //");
-			// console.log(chapterPages);
-			// console.log("// Page stories //");
-			// console.log(chapterStory);
-
 			t = 0;
 		}
 			var bookImageString = "";
